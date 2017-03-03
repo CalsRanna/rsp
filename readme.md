@@ -74,7 +74,9 @@ The repository we extended provides five methods:
 
 * `store(array $inputs)` You can use it to store data.
 * `get(array $columns = ['*'], array $credentials = null)` You can use it to get data. One thing you should notice is that the type of returned value is `Illuminate\Database\Eloquent\Collection` rather than `array`.
+
   > While the returned value has only one record, it is still an instance of `Illuminate\Database\Eloquent\Collection`. So if you want to find only one record and wish its' type is `Illuminate\Database\Eloquent\Model`, you can finish it yourself use the method `queryBuilder()` we provided.
+
 * `update(array $inputs, array $credentials)` You can use it to update data which satisfy credentials.
 * `destroy(array $credentials)` You can destroy data which satisfy credentials.
 * `queryBuilder()` You can use it to get a query builder to create you own method.
