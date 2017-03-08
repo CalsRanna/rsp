@@ -11,6 +11,11 @@ namespace Cals\RSPArchitecture\Presenters\Interfaces;
 
 use Carbon\Carbon;
 
+/**
+ * Interface PresenterInterface
+ *
+ * @package Cals\RSPArchitecture\Presenters\Interfaces
+ */
 interface PresenterInterface
 {
     /**

@@ -15,9 +15,20 @@ use Cals\RSPArchitecture\Repositories\RepositoryTrait;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Repository
+ *
+ * @package Cals\RSPArchitecture\Repositories\Implementations
+ */
 abstract class Repository implements RepositoryInterface
 {
+    /**
+     * @var Container
+     */
     private $app;
+    /**
+     * @var
+     */
     protected $model;
 
     /**

@@ -4,6 +4,11 @@ namespace Cals\RSPArchitecture\Commands;
 
 use Illuminate\Console\Command;
 
+/**
+ * Class MakeService
+ *
+ * @package Cals\RSPArchitecture\Commands
+ */
 class MakeService extends Command
 {
     /**
@@ -109,11 +114,6 @@ class MakeService extends Command
             . "class " . $service . " extends Service implements " . $service . "Interface\n"
             . "{\n"
             . "    private \$repository;\n\n"
-            . "    /**\n"
-            . "     * TestService constructor.\n"
-            . "     * \n"
-            . "     * @param \$repository\n"
-            . "     */\n"
             . "    public function __construct(" . $prefix . "RepositoryInterface \$repository)\n"
             . "    {\n"
             . "        \$this->repository = \$repository;\n"

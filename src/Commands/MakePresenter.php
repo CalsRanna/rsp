@@ -4,6 +4,11 @@ namespace Cals\RSPArchitecture\Commands;
 
 use Illuminate\Console\Command;
 
+/**
+ * Class MakePresenter
+ *
+ * @package Cals\RSPArchitecture\Commands
+ */
 class MakePresenter extends Command
 {
     /**
@@ -98,7 +103,7 @@ class MakePresenter extends Command
      */
     private function createImplementation($path, $namespace, $presenter)
     {
-        $model = $this->calculateModel($presenter);
+        $presenter = $this->calculateModel($presenter);
         $file = fopen($path . 'Implementations/' . $presenter . '.php', 'w');
         $content = "<?php\n\n"
             . "namespace " . $namespace . "\\Implementations;\n\n\n"
@@ -114,6 +119,7 @@ class MakePresenter extends Command
 
     /**
      * Calculate the model.
+     *
      * @param $presenter
      * @return string
      */

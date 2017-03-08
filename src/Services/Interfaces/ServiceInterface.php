@@ -9,6 +9,11 @@
 namespace Cals\RSPArchitecture\Services\Interfaces;
 
 
+/**
+ * Interface ServiceInterface
+ *
+ * @package Cals\RSPArchitecture\Services\Interfaces
+ */
 interface ServiceInterface
 {
     /**

@@ -12,8 +12,16 @@ namespace Cals\RSPArchitecture\Services\Implementations;
 use Cals\RSPArchitecture\Repositories\Interfaces\RepositoryInterface;
 use Cals\RSPArchitecture\Services\Interfaces\ServiceInterface;
 
+/**
+ * Class Service
+ *
+ * @package Cals\RSPArchitecture\Services\Implementations
+ */
 class Service implements ServiceInterface
 {
+    /**
+     * @var RepositoryInterface
+     */
     private $repository;
 
     /**

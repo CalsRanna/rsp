@@ -9,6 +9,11 @@
 namespace Cals\RSPArchitecture\Repositories\Interfaces;
 
 
+/**
+ * Interface RepositoryInterface
+ *
+ * @package Cals\RSPArchitecture\Repositories\Interfaces
+ */
 interface RepositoryInterface
 {
     /**

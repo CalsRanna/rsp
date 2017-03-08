@@ -11,6 +11,11 @@ namespace Cals\RSPArchitecture\Repositories\Exceptions;
 
 use Exception;
 
+/**
+ * Class RepositoryException
+ *
+ * @package Cals\RSPArchitecture\Repositories\Exceptions
+ */
 class RepositoryException extends Exception
 {
 

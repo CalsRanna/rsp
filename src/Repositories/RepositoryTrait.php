@@ -9,6 +9,11 @@
 namespace Cals\RSPArchitecture\Repositories;
 
 
+/**
+ * Class RepositoryTrait
+ *
+ * @package Cals\RSPArchitecture\Repositories
+ */
 trait RepositoryTrait
 {
     /**

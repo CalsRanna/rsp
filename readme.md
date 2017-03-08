@@ -2,27 +2,34 @@
 
 ## About RSP Architecture
 
-RSP Architecture is a web application library used to make things easy while you want build a plain Laravel application. Besides, it provides some efficient commands to let you free while you're coding.
+RSP Architecture is a web application library used to make things easy while you want build a plain Laravel application.
+Besides, it provides some efficient commands to let you free while you're coding.
 
-RSP is short for ' Repository Service Presenter '.
+RSP is short for **Repository Service Presenter**.
 
 ## How to use
 
 ### Installation
 
-You can use `composer require cals/rsp-architecture` to install RSP Architecture from [Packagist](https://packagist.org).
+You can run `composer require cals/rsp-architecture` to install RSP Architecture from
+[Packagist](https://packagist.org/packages/cals/rsp-architecture).
 
-Or, you can add `"cals/rsp-architecture": "0.1.*"` to your `composer.json` and then run `composer update` in your terminal to install it.
+Or, you can add `"cals/rsp-architecture": "0.1.*"` to your `composer.json` and then run `composer update` in your
+terminal to install it.
 
 ### Configuration
 
-After you install the RSP Architecture, you should put `Cals\RSPArchitecture\RSPProvider::class` in your `config/app.php` to make it work.
+After you install the RSP Architecture, you should put `Cals\RSPArchitecture\RSPProvider::class` in your
+`config/app.php` providers array to make it work.
 
+Then you should run `php artisan vendor:publish --tag=rsp` to publish `rsp.php`.
 ### Usage
 
 #### Repository
 
-You can use `php artisan make:repository ExampleRepository` to create a repository and its' interface, or you can create them manually if you want to. Remember that the repository should extends `Cals\RSPArchitecture\Repositories\Implementations\Repository` if you create it manually.
+You can use `php artisan make:repository` to create a repository and its' interface, or you can create them manually if
+you want to. Remember that the repository should extends `Cals\RSPArchitecture\Repositories\Implementations\Repository`
+if you create it manually.
 
 The repository is like below:
 
@@ -38,11 +45,6 @@ use Cals\RSPArchitecture\Repositories\Implementations\Repository;
 
 class ExampleRepository extends Repository implements ExampleRepositoryInterface
 {
-    /**
-     * Get the full name of model.
-     * 
-     * @return mixed
-     */
     function model()
     {
         return Example::class;
@@ -68,24 +70,31 @@ interface ExampleRepositoryInterface
 
 ```
 
-As you can see, RSP Architecture use Eloquent ORM to operate database, so you should create models to map tables. We recommend you put your models in `app/Models/` instead of `app/` which will make your project more plain.
+As you can see, RSP Architecture use Eloquent ORM to operate database, so you should create models to map tables. We
+recommend you put your models in `app/Models/` instead of `app/` which will make your project more plain.
 
 The repository we extended provides five methods:
 
 * `store(array $inputs)` You can use it to store data.
-* `get(array $columns = ['*'], array $credentials = null)` You can use it to get data. One thing you should notice is that the type of returned value is `Illuminate\Database\Eloquent\Collection` rather than `array`.
-
-  > While the returned value has only one record, it is still an instance of `Illuminate\Database\Eloquent\Collection`. So if you want to find only one record and wish its' type is `Illuminate\Database\Eloquent\Model`, you can finish it yourself use the method `queryBuilder()` we provided.
-
+* `get(array $columns = ['*'], array $credentials = null)` You can use it to get data. One thing you should notice is
+that the type of returned value is `Illuminate\Database\Eloquent\Collection` rather than `array`.
 * `update(array $inputs, array $credentials)` You can use it to update data which satisfy credentials.
 * `destroy(array $credentials)` You can destroy data which satisfy credentials.
 * `queryBuilder()` You can use it to get a query builder to create you own method.
 
-While we use RSP, we do not use repository directly in controller. Repository should always provide methods to let service use it.
+> While the returned value has only one record when you use `get(array $columns = ['*'],array $crendentials = null)`,
+it is still an instance of `Illuminate\Database\Eloquent\Collection`. So if you want to find only one record and wish
+its' type is `Illuminate\Database\Eloquent\Model`, you can finish it yourself use the method `queryBuilder()` we
+provided.
+
+While we use RSP, we do not use repository directly in controller. Repository should always provide methods to let
+service use it.
 
 #### Service
 
-You can use `php artisan make:service ExampleService` to create a service and its' interface, or you can create them manually if you want to. Remember that the service should extends `Cals\RSPArchitecture\Services\Implementations\Service` if you create it manually.
+You can use `php artisan make:service ExampleService` to create a service and its' interface, or you can create them
+manually if you want to. Remember that the service should extends
+`Cals\RSPArchitecture\Services\Implementations\Service` if you create it manually.
 
 The service is like below:
 
@@ -103,11 +112,6 @@ class ExampleService extends Service implements ExampleServiceInterface
 {
     private $repository;
 
-    /**
-     * ExampleService constructor.
-     * 
-     * @param $repository
-     */
     public function __construct(ExampleRepositoryInterface $repository)
     {
         $this->repository = $repository;
@@ -144,7 +148,9 @@ These four methods call methods provided by repository simply. So you can overri
 
 #### Presenter
 
-You can use `php artisan make:presenter ExamplePresenter` to create a presenter and its' interface, or you can create them manually if you want to. Remember that the presenter should extends `Cals\RSPArchitecture\Presenters\Implementations\Presenter` if you create it manually.
+You can use `php artisan make:presenter ExamplePresenter` to create a presenter and its' interface, or you can create
+them manually if you want to. Remember that the presenter should extends
+`Cals\RSPArchitecture\Presenters\Implementations\Presenter` if you create it manually.
 
 The presenter is like below:
 
@@ -186,9 +192,68 @@ The presenter we extended provides two methods:
 
 The first method is used to limit length and the second method is used to show different form the time you give to now.
 
+After you create your class, you need put it in `rsp.php`:
+
+```php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Cals
+ * Date: 2017/3/8
+ * Time: 14:03
+ */
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Repositories
+    |--------------------------------------------------------------------------
+    |
+    | This array is the list of your repository. The key should be the full
+    | name of interface and the value should be the full name of
+    | implementation.
+    */
+
+    'repositories' => [],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Services
+    |--------------------------------------------------------------------------
+    |
+    | This array is the list of your service. The key should be the full name
+    | of interface and the value should be the full name of implementation.
+    */
+
+    'services' => [],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Presenters
+    |--------------------------------------------------------------------------
+    |
+    | This array is the list of your presenter. The key should be the full name
+    | of interface and the value should be the full name of implementation.
+    */
+    'presenters' => []
+];
+```
+
+Such as:
+
+```php
+    'repositories' => [
+        'App\Repositories\Interfaces\ExampleRepositoryInterface' => 'App\Repository\Implementations\ExampleRepository'
+    ],
+```
+
+Then Laravel can use it.
+
 #### Commands
 
-We provide some commands for you to create files which have some basic codes, and you can put your own code into it to satisfy your needs.
+We provide some commands for you to create files which have some basic codes, and you can put your own code into it to
+satisfy your needs.
 
 The commands list below:
 

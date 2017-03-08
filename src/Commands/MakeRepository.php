@@ -4,6 +4,11 @@ namespace Cals\RSPArchitecture\Commands;
 
 use Illuminate\Console\Command;
 
+/**
+ * Class MakeRepository
+ *
+ * @package Cals\RSPArchitecture\Commands
+ */
 class MakeRepository extends Command
 {
     /**
