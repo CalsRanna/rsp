@@ -258,7 +258,7 @@ Such as:
 
 Then Laravel can bind the interface on the implementation.
 
-#### Commands
+### Commands
 
 We provide some commands for you to create files which have some basic codes, and you can put your own code into it to
 satisfy your needs.
