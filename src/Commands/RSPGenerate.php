@@ -57,7 +57,7 @@ class RSPGenerate extends Command
             $array = explode('\\', $service);
             $suffix = array_splice($array,3);
             $repository = implode('/',$suffix);
-            $this->callSilent('make:$service',[
+            $this->callSilent('make:service',[
                 '$service' => $service
             ]);
         }
@@ -65,7 +65,7 @@ class RSPGenerate extends Command
             $array = explode('\\', $presenter);
             $suffix = array_splice($array,3);
             $repository = implode('/',$suffix);
-            $this->callSilent('make:$presenter',[
+            $this->callSilent('make:presenter',[
                 '$presenter' => $presenter
             ]);
         }
