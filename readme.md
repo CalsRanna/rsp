@@ -14,7 +14,7 @@ RSP is short for **Repository Service Presenter**.
 You can run `composer require cals/rsp-architecture` to install RSP Architecture from
 [Packagist](https://packagist.org/packages/cals/rsp-architecture).
 
-Or, you can add `"cals/rsp-architecture": "0.1-rc.4"` to your `composer.json` and then run `composer update` in your
+Or, you can add `"cals/rsp-architecture": "0.1-rc.5"` to your `composer.json` and then run `composer update` in your
 terminal to install it.
 
 ### Configuration

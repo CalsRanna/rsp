@@ -106,7 +106,6 @@ class MakePresenter extends Command
      */
     private function createImplementation($path, $namespace, $presenter)
     {
-        $presenter = $this->calculateModel($presenter);
         $fileName = $path . 'Implementations/' . $presenter . '.php';
         if (!file_exists($fileName)) {
             $file = fopen($path . 'Implementations/' . $presenter . '.php', 'w');
@@ -121,17 +120,5 @@ class MakePresenter extends Command
             fwrite($file, $content);
             fclose($file);
         }
-    }
-
-    /**
-     * Calculate the model.
-     *
-     * @param $presenter
-     * @return string
-     */
-    private function calculateModel($presenter)
-    {
-        $length = count($presenter) - 9;
-        return substr($presenter, 0, $length - 1);
     }
 }
