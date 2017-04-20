@@ -83,15 +83,18 @@ class MakeService extends Command
      */
     private function createInterface($path, $namespace, $service)
     {
-        $file = fopen($path . 'Interfaces/' . $service . 'Interface.php', 'w');
-        $content = "<?php\n\n"
-            . "namespace " . $namespace . "\\Interfaces;\n\n\n"
-            . "interface " . $service . "Interface\n"
-            . "{\n"
-            . "    // Put your code here...\n"
-            . "}\n";
-        fwrite($file, $content);
-        fclose($file);
+        $fileName = $path . 'Interfaces/' . $service . 'Interface.php';
+        if (!file_exists($fileName)) {
+            $file = fopen($path . 'Interfaces/' . $service . 'Interface.php', 'w');
+            $content = "<?php\n\n"
+                . "namespace " . $namespace . "\\Interfaces;\n\n"
+                . "interface " . $service . "Interface\n"
+                . "{\n"
+                . "    // Put your code here...\n"
+                . "}\n";
+            fwrite($file, $content);
+            fclose($file);
+        }
     }
 
     /**
@@ -105,27 +108,30 @@ class MakeService extends Command
     {
         $repository = $this->calculateRepository($namespace, $service);
         $prefix = $this->calculatePrefix($service);
-        $file = fopen($path . 'Implementations/' . $service . '.php', 'w');
-        $content = "<?php\n\n"
-            . "namespace " . $namespace . "\\Implementations;\n\n\n"
-            . "use App\\Repositories\\" . $repository . "RepositoryInterface;\n"
-            . "use " . $namespace . "\\Interfaces\\" . $service . "Interface;\n"
-            . "use Cals\\RSPArchitecture\\Services\\Implementations\\Service;\n\n"
-            . "class " . $service . " extends Service implements " . $service . "Interface\n"
-            . "{\n"
-            . "    /**\n"
-            . "     * " . $service . " constructor.\n"
-            . "     *\n"
-            . "     * @param " . $prefix . "RepositoryInterface \$repository\n"
-            . "     */\n"
-            . "    public function __construct(" . $prefix . "RepositoryInterface \$repository)\n"
-            . "    {\n"
-            . "        \$this->repository = \$repository;\n"
-            . "    }\n\n"
-            . "    // Put your code here...\n"
-            . "}\n";
-        fwrite($file, $content);
-        fclose($file);
+        $fileName = $path . 'Implementations/' . $service . '.php';
+        if (!file_exists($fileName)) {
+            $file = fopen($path . 'Implementations/' . $service . '.php', 'w');
+            $content = "<?php\n\n"
+                . "namespace " . $namespace . "\\Implementations;\n\n"
+                . "use App\\Repositories\\" . $repository . "RepositoryInterface;\n"
+                . "use " . $namespace . "\\Interfaces\\" . $service . "Interface;\n"
+                . "use Cals\\RSPArchitecture\\Services\\Implementations\\Service;\n\n"
+                . "class " . $service . " extends Service implements " . $service . "Interface\n"
+                . "{\n"
+                . "    /**\n"
+                . "     * " . $service . " constructor.\n"
+                . "     *\n"
+                . "     * @param " . $prefix . "RepositoryInterface \$repository\n"
+                . "     */\n"
+                . "    public function __construct(" . $prefix . "RepositoryInterface \$repository)\n"
+                . "    {\n"
+                . "        \$this->repository = \$repository;\n"
+                . "    }\n\n"
+                . "    // Put your code here...\n"
+                . "}\n";
+            fwrite($file, $content);
+            fclose($file);
+        }
     }
 
     /**

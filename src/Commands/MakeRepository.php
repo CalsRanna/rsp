@@ -83,15 +83,18 @@ class MakeRepository extends Command
      */
     private function createInterface($path, $namespace, $repository)
     {
-        $file = fopen($path . 'Interfaces/' . $repository . 'Interface.php', 'w');
-        $content = "<?php\n\n"
-            . "namespace " . $namespace . "\\Interfaces;\n\n\n"
-            . "interface " . $repository . "Interface\n"
-            . "{\n"
-            . "    // Put your code here...\n"
-            . "}\n";
-        fwrite($file, $content);
-        fclose($file);
+        $fileName = $path . 'Interfaces/' . $repository . 'Interface.php';
+        if (!file_exists($fileName)) {
+            $file = fopen($path . 'Interfaces/' . $repository . 'Interface.php', 'w');
+            $content = "<?php\n\n"
+                . "namespace " . $namespace . "\\Interfaces;\n\n"
+                . "interface " . $repository . "Interface\n"
+                . "{\n"
+                . "    // Put your code here...\n"
+                . "}\n";
+            fwrite($file, $content);
+            fclose($file);
+        }
     }
 
     /**
@@ -104,27 +107,30 @@ class MakeRepository extends Command
     private function createImplementation($path, $namespace, $repository)
     {
         $model = $this->calculateModel($repository);
-        $file = fopen($path . 'Implementations/' . $repository . '.php', 'w');
-        $content = "<?php\n\n"
-            . "namespace " . $namespace . "\\Implementations;\n\n\n"
-            . "use App\\Models\\" . $model . ";\n"
-            . "use " . $namespace . "\\Interfaces\\" . $repository . "Interface;\n"
-            . "use Cals\\RSPArchitecture\\Repositories\\Implementations\\Repository;\n\n"
-            . "class " . $repository . " extends Repository implements " . $repository . "Interface\n"
-            . "{\n"
-            . "    /**\n"
-            . "     * Get the full name of model.\n"
-            . "     *\n"
-            . "     * @return mixed\n"
-            . "     */\n"
-            . "    function model()\n"
-            . "    {\n"
-            . "        return " . $model . "::class;\n"
-            . "    }\n\n"
-            . "    // Put your code here...\n"
-            . "}\n";
-        fwrite($file, $content);
-        fclose($file);
+        $fileName = $path . 'Implementations/' . $repository . '.php';
+        if (!file_exists($fileName)) {
+            $file = fopen($path . 'Implementations/' . $repository . '.php', 'w');
+            $content = "<?php\n\n"
+                . "namespace " . $namespace . "\\Implementations;\n\n"
+                . "use App\\Models\\" . $model . ";\n"
+                . "use " . $namespace . "\\Interfaces\\" . $repository . "Interface;\n"
+                . "use Cals\\RSPArchitecture\\Repositories\\Implementations\\Repository;\n\n"
+                . "class " . $repository . " extends Repository implements " . $repository . "Interface\n"
+                . "{\n"
+                . "    /**\n"
+                . "     * Get the full name of model.\n"
+                . "     *\n"
+                . "     * @return mixed\n"
+                . "     */\n"
+                . "    function model()\n"
+                . "    {\n"
+                . "        return " . $model . "::class;\n"
+                . "    }\n\n"
+                . "    // Put your code here...\n"
+                . "}\n";
+            fwrite($file, $content);
+            fclose($file);
+        }
     }
 
     /**

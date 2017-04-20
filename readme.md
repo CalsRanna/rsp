@@ -38,7 +38,6 @@ The repository is like below:
 
 namespace App\Repositories\Implementations;
 
-
 use App\Models\Example;
 use App\Repositories\Interfaces\ExampleRepositoryInterface;
 use Cals\RSPArchitecture\Repositories\Implementations\Repository;
@@ -66,7 +65,6 @@ And the interface is like below:
 <?php
 
 namespace App\Repositories\Interfaces;
-
 
 interface ExampleRepositoryInterface
 {
@@ -111,7 +109,6 @@ The service is like below:
 
 namespace App\Services\Implementations;
 
-
 use App\Repositories\Interfaces\ExampleRepositoryInterface;
 use App\Services\Interfaces\ExampleServiceInterface;
 use Cals\RSPArchitecture\Services\Implementations\Service;
@@ -139,7 +136,6 @@ And the interface is like below:
 <?php
 
 namespace App\Services\Interfaces;
-
 
 interface ExampleServiceInterface
 {
@@ -171,7 +167,6 @@ The presenter is like below:
 
 namespace App\Presenters\Implementations;
 
-
 use App\Presenters\Interfaces\ExamplePresenterInterface;
 use Cals\RSPArchitecture\Presenters\Implementations\Presenter;
 
@@ -188,7 +183,6 @@ And the interface is like below:
 <?php
 
 namespace App\Presenters\Interfaces;
-
 
 interface ExamplePresenterInterface
 {
@@ -274,6 +268,7 @@ The commands list below:
 * `make:repository` You can use it to create repository class and its' interface.
 * `make:service` You can use it to create service class and its' interface.
 * `make:presenter` You can use it to create presenter class and its' interface.
+* `rsp:generate` You can use it to generate repositories, services and presenters based on registration.
 
 ## Contributing
 

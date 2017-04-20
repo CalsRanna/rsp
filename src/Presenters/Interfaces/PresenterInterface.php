@@ -8,7 +8,6 @@
 
 namespace Cals\RSPArchitecture\Presenters\Interfaces;
 
-
 use Carbon\Carbon;
 
 /**

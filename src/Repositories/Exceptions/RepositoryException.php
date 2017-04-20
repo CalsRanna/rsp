@@ -8,7 +8,6 @@
 
 namespace Cals\RSPArchitecture\Repositories\Exceptions;
 
-
 use Exception;
 
 /**

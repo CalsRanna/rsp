@@ -8,7 +8,6 @@
 
 namespace Cals\RSPArchitecture\Repositories\Implementations;
 
-
 use Cals\RSPArchitecture\Repositories\Exceptions\RepositoryException;
 use Cals\RSPArchitecture\Repositories\Interfaces\RepositoryInterface;
 use Cals\RSPArchitecture\Repositories\RepositoryTrait;

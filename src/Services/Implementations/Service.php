@@ -8,7 +8,6 @@
 
 namespace Cals\RSPArchitecture\Services\Implementations;
 
-
 use Cals\RSPArchitecture\Repositories\Interfaces\RepositoryInterface;
 use Cals\RSPArchitecture\Services\Interfaces\ServiceInterface;
 

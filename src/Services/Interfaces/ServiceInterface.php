@@ -8,7 +8,6 @@
 
 namespace Cals\RSPArchitecture\Services\Interfaces;
 
-
 /**
  * Interface ServiceInterface
  *

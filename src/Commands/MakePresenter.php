@@ -83,15 +83,18 @@ class MakePresenter extends Command
      */
     private function createInterface($path, $namespace, $presenter)
     {
-        $file = fopen($path . 'Interfaces/' . $presenter . 'Interface.php', 'w');
-        $content = "<?php\n\n"
-            . "namespace " . $namespace . "\\Interfaces;\n\n\n"
-            . "interface " . $presenter . "Interface\n"
-            . "{\n"
-            . "    // Put your code here...\n"
-            . "}\n";
-        fwrite($file, $content);
-        fclose($file);
+        $fileName = $path . 'Interfaces/' . $presenter . 'Interface.php';
+        if (!file_exists($fileName)) {
+            $file = fopen($path . 'Interfaces/' . $presenter . 'Interface.php', 'w');
+            $content = "<?php\n\n"
+                . "namespace " . $namespace . "\\Interfaces;\n\n"
+                . "interface " . $presenter . "Interface\n"
+                . "{\n"
+                . "    // Put your code here...\n"
+                . "}\n";
+            fwrite($file, $content);
+            fclose($file);
+        }
     }
 
     /**
@@ -104,17 +107,20 @@ class MakePresenter extends Command
     private function createImplementation($path, $namespace, $presenter)
     {
         $presenter = $this->calculateModel($presenter);
-        $file = fopen($path . 'Implementations/' . $presenter . '.php', 'w');
-        $content = "<?php\n\n"
-            . "namespace " . $namespace . "\\Implementations;\n\n\n"
-            . "use " . $namespace . "\\Interfaces\\" . $presenter . "Interface;\n"
-            . "use Cals\\RSPArchitecture\\Presenters\\Implementations\\Presenter;\n\n"
-            . "class " . $presenter . " extends Presenter implements " . $presenter . "Interface\n"
-            . "{\n"
-            . "    // Put your code here...\n"
-            . "}\n";
-        fwrite($file, $content);
-        fclose($file);
+        $fileName = $path . 'Implementations/' . $presenter . '.php';
+        if (!file_exists($fileName)) {
+            $file = fopen($path . 'Implementations/' . $presenter . '.php', 'w');
+            $content = "<?php\n\n"
+                . "namespace " . $namespace . "\\Implementations;\n\n"
+                . "use " . $namespace . "\\Interfaces\\" . $presenter . "Interface;\n"
+                . "use Cals\\RSPArchitecture\\Presenters\\Implementations\\Presenter;\n\n"
+                . "class " . $presenter . " extends Presenter implements " . $presenter . "Interface\n"
+                . "{\n"
+                . "    // Put your code here...\n"
+                . "}\n";
+            fwrite($file, $content);
+            fclose($file);
+        }
     }
 
     /**

@@ -10,7 +10,6 @@ namespace Cals\RSPArchitecture\Repositories;
 
 use Illuminate\Foundation\Application;
 
-
 /**
  * Class RepositoryTrait
  *

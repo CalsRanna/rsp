@@ -5,6 +5,7 @@ namespace Cals\RSPArchitecture;
 use Cals\RSPArchitecture\Commands\MakePresenter;
 use Cals\RSPArchitecture\Commands\MakeRepository;
 use Cals\RSPArchitecture\Commands\MakeService;
+use Cals\RSPArchitecture\Commands\RSPGenerate;
 use Cals\RSPArchitecture\Repositories\Implementations\Repository;
 use Cals\RSPArchitecture\Repositories\Interfaces\RepositoryInterface;
 use Illuminate\Support\ServiceProvider;
@@ -26,7 +27,8 @@ class RSPProvider extends ServiceProvider
         $this->commands([
             MakeRepository::class,
             MakeService::class,
-            MakePresenter::class
+            MakePresenter::class,
+            RSPGenerate::class
         ]);
         $this->publishes([
             __DIR__ . '/config/rsp.php' => config_path('rsp.php')
