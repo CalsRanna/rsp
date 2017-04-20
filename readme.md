@@ -14,7 +14,7 @@ RSP is short for **Repository Service Presenter**.
 You can run `composer require cals/rsp-architecture` to install RSP Architecture from
 [Packagist](https://packagist.org/packages/cals/rsp-architecture).
 
-Or, you can add `"cals/rsp-architecture": "0.1.*"` to your `composer.json` and then run `composer update` in your
+Or, you can add `"cals/rsp-architecture": "0.1-rc2"` to your `composer.json` and then run `composer update` in your
 terminal to install it.
 
 ### Configuration
@@ -27,7 +27,7 @@ Then you should run `php artisan vendor:publish --tag=rsp` to publish `rsp.php`.
 
 #### Repository
 
-You can use `php artisan make:repository` to create a repository and its' interface, or you can create them manually if
+You can use `make:repository` to create a repository and its' interface, or you can create them manually if
 you want to. Remember that the repository should extends `Cals\RSPArchitecture\Repositories\Implementations\Repository`
 if you create it manually.
 
@@ -45,6 +45,11 @@ use Cals\RSPArchitecture\Repositories\Implementations\Repository;
 
 class ExampleRepository extends Repository implements ExampleRepositoryInterface
 {
+    /**
+     * Get the full name of model.
+     *
+     * @return mixed
+     */
     function model()
     {
         return Example::class;
@@ -75,16 +80,19 @@ recommend you put your models in `app/Models/` instead of `app/` which will make
 
 The repository we extended provides five methods:
 
-* `store(array $inputs)` You can use it to store data.
-* `get(array $columns = ['*'], array $credentials = null)` You can use it to get data. One thing you should notice is
+* `store(array $inputs)` You can use it to store data. The type of returned value is subclass of 
+`Illuminate\Database\Eloquent\Model`.
+* `get(array $columns = ['*'], array $credentials = null)` You can use it to get data. One thing you should notice is 
 that the type of returned value is `Illuminate\Database\Eloquent\Collection` rather than `array`.
-* `update(array $inputs, array $credentials)` You can use it to update data which satisfy credentials.
-* `destroy(array $credentials)` You can destroy data which satisfy credentials.
-* `queryBuilder()` You can use it to get a query builder to create you own method.
+* `update(array $inputs, array $credentials)` You can use it to update data which satisfy credentials. The type of 
+returned value is `boolean`.
+* `destroy(array $credentials)` You can destroy data which satisfy credentials. The type of returned value is `boolean`.
+* `builder()` You can use it to create you own method. The type of returned value is 
+`Illuminate\Database\Eloquent\Builde`.
 
 > While the returned value has only one record when you use `get(array $columns = ['*'],array $crendentials = null)`,
 it is still an instance of `Illuminate\Database\Eloquent\Collection`. So if you want to find only one record and wish
-its' type is `Illuminate\Database\Eloquent\Model`, you can finish it yourself use the method `queryBuilder()` we
+its' type is `Illuminate\Database\Eloquent\Model`, you can finish it yourself use the method `builder()` we
 provided.
 
 While we use RSP, we do not use repository directly in controller. Repository should always provide methods to let
@@ -92,8 +100,8 @@ service use it.
 
 #### Service
 
-You can use `php artisan make:service ExampleService` to create a service and its' interface, or you can create them
-manually if you want to. Remember that the service should extends
+You can use `make:service` to create a service and its' interface, or you can create them manually if you want to. 
+Remember that the service should extends
 `Cals\RSPArchitecture\Services\Implementations\Service` if you create it manually.
 
 The service is like below:
@@ -110,8 +118,11 @@ use Cals\RSPArchitecture\Services\Implementations\Service;
 
 class ExampleService extends Service implements ExampleServiceInterface
 {
-    private $repository;
-
+    /**
+     * ExampleService constructor.
+     *
+     * @param ExampleRepositoryInterface $repository
+     */
     public function __construct(ExampleRepositoryInterface $repository)
     {
         $this->repository = $repository;
@@ -144,13 +155,14 @@ The service we extended provides four methods:
 * `update(array $inputs, array $credentials)`
 * `destroy(array $credentials)`
 
-These four methods call methods provided by repository simply. So you can override it to satisfy your needs.
+These four methods call methods provided by repository simply. So you can override it to satisfy your needs. And the 
+type of returned value is like above listed in **Repository**.
 
 #### Presenter
 
-You can use `php artisan make:presenter ExamplePresenter` to create a presenter and its' interface, or you can create
-them manually if you want to. Remember that the presenter should extends
-`Cals\RSPArchitecture\Presenters\Implementations\Presenter` if you create it manually.
+You can use `make:presenter` to create a presenter and its' interface, or you can create them manually if you want to. 
+Remember that the presenter should extends `Cals\RSPArchitecture\Presenters\Implementations\Presenter` if you create it 
+manually.
 
 The presenter is like below:
 
@@ -191,6 +203,8 @@ The presenter we extended provides two methods:
 * `differentiateForHumans(Carbon $carbon)`
 
 The first method is used to limit length and the second method is used to show different form the time you give to now.
+
+### Bind
 
 After you create your class, you need put it in `rsp.php`:
 
@@ -248,7 +262,7 @@ Such as:
     ],
 ```
 
-Then Laravel can use it.
+Then Laravel can bind the interface on the implementation.
 
 #### Commands
 

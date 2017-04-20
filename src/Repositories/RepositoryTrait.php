@@ -8,6 +8,8 @@
 
 namespace Cals\RSPArchitecture\Repositories;
 
+use Illuminate\Foundation\Application;
+
 
 /**
  * Class RepositoryTrait
@@ -40,7 +42,12 @@ trait RepositoryTrait
         foreach ($credentials as $key => $credential) {
             $query = $query->where($key, $credential);
         }
-        return $query->lists($columns);
+        $versions = explode('.', Application::VERSION);
+        if ($versions[1] === '1') {
+            return $query->lists($columns);
+        } else {
+            return $query->pluck($columns);
+        }
     }
 
     /**

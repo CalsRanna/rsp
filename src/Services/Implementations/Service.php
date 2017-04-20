@@ -22,15 +22,7 @@ class Service implements ServiceInterface
     /**
      * @var RepositoryInterface
      */
-    private $repository;
-
-    /**
-     * ServiceImplementation constructor.
-     */
-    public function __construct(RepositoryInterface $repository)
-    {
-        $this->repository = $repository;
-    }
+    protected $repository;
 
     /**
      * Store something.
