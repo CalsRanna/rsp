@@ -86,11 +86,11 @@ trait RepositoryTrait
     }
 
     /**
-     * Provide the query builder.
+     * Provide the Eloquent builder.
      *
      * @return mixed
      */
-    public function queryBuilder()
+    public function builder()
     {
         return $this->model;
     }
