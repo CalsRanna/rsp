@@ -30,7 +30,7 @@ interface ServiceInterface
      * @param array|null $credentials
      * @return mixed
      */
-    public function get(array $columns = ['*'], array $credentials = null);
+    public function get(array $columns = ['*'], array $credentials = []);
 
     /**
      * Update something by $credentials.

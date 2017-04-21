@@ -41,7 +41,7 @@ class Service implements ServiceInterface
      * @param array|null $credentials
      * @return mixed
      */
-    public function get(array $columns = ['*'], array $credentials = null)
+    public function get(array $columns = ['*'], array $credentials = [])
     {
         return $this->repository->get($columns, $credentials);
     }
