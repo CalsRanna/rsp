@@ -8,8 +8,6 @@
 
 namespace Cals\RSPArchitecture\Repositories;
 
-use Illuminate\Foundation\Application;
-
 /**
  * Class RepositoryTrait
  *
@@ -35,18 +33,13 @@ trait RepositoryTrait
      * @param array|null $credentials
      * @return mixed
      */
-    public function get(array $columns = ['*'], array $credentials = null)
+    public function get(array $columns = ['*'], array $credentials = [])
     {
         $query = $this->model;
         foreach ($credentials as $key => $credential) {
             $query = $query->where($key, $credential);
         }
-        $versions = explode('.', Application::VERSION);
-        if ($versions[1] === '1') {
-            return $query->lists($columns);
-        } else {
-            return $query->pluck($columns);
-        }
+        return $query->get($columns);
     }
 
     /**
