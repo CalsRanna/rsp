@@ -55,5 +55,5 @@ interface RepositoryInterface
      *
      * @return mixed
      */
-    public function queryBuilder();
+    public function builder();
 }
