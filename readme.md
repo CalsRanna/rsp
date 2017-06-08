@@ -14,7 +14,7 @@ RSP is short for **Repository Service Presenter**.
 You can run `composer require cals/rsp-architecture` to install RSP Architecture from
 [Packagist](https://packagist.org/packages/cals/rsp-architecture).
 
-Or, you can add `"cals/rsp-architecture": "0.1-rc.8"` to your `composer.json` and then run `composer update` in your
+Or, you can add `"cals/rsp-architecture": "1.0"` to your `composer.json` and then run `composer update` in your
 terminal to install it.
 
 ### Configuration
@@ -80,13 +80,13 @@ The repository we extended provides five methods:
 
 * `store(array $inputs)` You can use it to store data. The type of returned value is subclass of 
 `Illuminate\Database\Eloquent\Model`.
-* `get(array $columns = ['*'], array $credentials = null)` You can use it to get data. One thing you should notice is 
+* `get(array $credentials = null, array $columns = ['*'])` You can use it to get data. One thing you should notice is 
 that the type of returned value is `Illuminate\Database\Eloquent\Collection` rather than `array`.
 * `update(array $inputs, array $credentials)` You can use it to update data which satisfy credentials. The type of 
 returned value is `boolean`.
 * `destroy(array $credentials)` You can destroy data which satisfy credentials. The type of returned value is `boolean`.
-* `builder()` You can use it to create you own method. The type of returned value is 
-`Illuminate\Database\Eloquent\Builde`.
+* `builder(array $credentials = null)` You can use it to create you own method. The type of returned value is 
+`Illuminate\Database\Eloquent\Builder`.
 
 > While the returned value has only one record when you use `get(array $columns = ['*'],array $crendentials = null)`,
 it is still an instance of `Illuminate\Database\Eloquent\Collection`. So if you want to find only one record and wish
@@ -147,7 +147,7 @@ interface ExampleServiceInterface
 The service we extended provides four methods:
 
 * `store(array $inputs)`
-* `get(array $columns = ['*'], array $credentials = null)`
+* `get(array $credentials = null, array $columns = ['*'])`
 * `update(array $inputs, array $credentials)`
 * `destroy(array $credentials)`
 

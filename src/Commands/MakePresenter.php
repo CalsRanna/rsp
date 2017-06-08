@@ -26,9 +26,7 @@ class MakePresenter extends Command
     protected $description = 'Create a new presenter class';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
+     * Run the parent's construct method.
      */
     public function __construct()
     {

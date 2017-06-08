@@ -34,7 +34,6 @@ abstract class Repository implements RepositoryInterface
      * Repository constructor.
      *
      * @param $app
-     * @param $model
      */
     public function __construct(Container $app)
     {

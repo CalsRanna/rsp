@@ -26,11 +26,11 @@ interface ServiceInterface
     /**
      * Get something by $credentials. Show columns provided in $columns.
      *
-     * @param array $columns
      * @param array|null $credentials
+     * @param array $columns
      * @return mixed
      */
-    public function get(array $columns = ['*'], array $credentials = []);
+    public function get(array $credentials = null, array $columns = ['*']);
 
     /**
      * Update something by $credentials.

@@ -8,7 +8,6 @@
 
 namespace Cals\RSPArchitecture\Repositories\Interfaces;
 
-
 /**
  * Interface RepositoryInterface
  *
@@ -27,11 +26,11 @@ interface RepositoryInterface
     /**
      * Get something by $credentials. Show columns provided in $columns.
      *
-     * @param array $columns
      * @param array|null $credentials
+     * @param array $columns
      * @return mixed
      */
-    public function get(array $columns = ['*'], array $credentials = []);
+    public function get(array $credentials = null, array $columns = ['*']);
 
     /**
      * Update something by $credentials.
@@ -53,7 +52,8 @@ interface RepositoryInterface
     /**
      * Provide the query builder.
      *
+     * @param array|null $credentials
      * @return mixed
      */
-    public function builder();
+    public function builder(array $credentials = null);
 }

@@ -33,13 +33,10 @@ trait RepositoryTrait
      * @param array|null $credentials
      * @return mixed
      */
-    public function get(array $columns = ['*'], array $credentials = [])
+    public function get(array $credentials = null, array $columns = ['*'])
     {
-        $query = $this->model;
-        foreach ($credentials as $key => $credential) {
-            $query = $query->where($key, $credential);
-        }
-        return $query->get($columns);
+        $builder = $this->builder($credentials);
+        return $builder->get($columns);
     }
 
     /**
@@ -51,14 +48,8 @@ trait RepositoryTrait
      */
     public function update(array $inputs, array $credentials)
     {
-        $query = $this->model;
-        foreach ($credentials as $key => $credential) {
-            $query = $query->where($key, $credential);
-        }
-        $models = $query->get();
-        foreach ($models as $model) {
-            $model->update($inputs);
-        }
+        $builder = $this->builder($credentials);
+        $builder->update($inputs);
         return true;
     }
 
@@ -70,20 +61,22 @@ trait RepositoryTrait
      */
     public function destroy(array $credentials)
     {
-        $query = $this->model;
-        foreach ($credentials as $key => $credential) {
-            $query = $query->where($key, $credential);
-        }
-        return $query->delete();
+        $builder = $this->builder($credentials);
+        return $builder->delete();
     }
 
     /**
      * Provide the Eloquent builder.
      *
+     * @param array|null $credentials
      * @return mixed
      */
-    public function builder()
+    public function builder(array $credentials = null)
     {
-        return $this->model;
+        $builder = $this->model;
+        foreach ($credentials as $key => $credential) {
+            $builder = $builder->where($key, $credential);
+        }
+        return $builder;
     }
 }
