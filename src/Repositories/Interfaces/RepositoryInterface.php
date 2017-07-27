@@ -6,12 +6,12 @@
  * Time: 20:49
  */
 
-namespace Cals\RSPArchitecture\Repositories\Interfaces;
+namespace Cals\RSP\Repositories\Interfaces;
 
 /**
  * Interface RepositoryInterface
  *
- * @package Cals\RSPArchitecture\Repositories\Interfaces
+ * @package Cals\RSP\Repositories\Interfaces
  */
 interface RepositoryInterface
 {

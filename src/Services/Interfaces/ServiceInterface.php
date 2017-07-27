@@ -6,12 +6,12 @@
  * Time: 23:06
  */
 
-namespace Cals\RSPArchitecture\Services\Interfaces;
+namespace Cals\RSP\Services\Interfaces;
 
 /**
  * Interface ServiceInterface
  *
- * @package Cals\RSPArchitecture\Services\Interfaces
+ * @package Cals\RSP\Services\Interfaces
  */
 interface ServiceInterface
 {

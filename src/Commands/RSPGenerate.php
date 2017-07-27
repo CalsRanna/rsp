@@ -1,13 +1,13 @@
 <?php
 
-namespace Cals\RSPArchitecture\Commands;
+namespace Cals\RSP\Commands;
 
 use Illuminate\Console\Command;
 
 /**
  * Class RSPGenerate
  *
- * @package Cals\RSPArchitecture\Commands
+ * @package Cals\RSP\Commands
  */
 class RSPGenerate extends Command
 {

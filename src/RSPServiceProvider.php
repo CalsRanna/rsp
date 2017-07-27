@@ -1,13 +1,11 @@
 <?php
 
-namespace Cals\RSPArchitecture;
+namespace Cals\RSP;
 
-use Cals\RSPArchitecture\Commands\MakePresenter;
-use Cals\RSPArchitecture\Commands\MakeRepository;
-use Cals\RSPArchitecture\Commands\MakeService;
-use Cals\RSPArchitecture\Commands\RSPGenerate;
-use Cals\RSPArchitecture\Repositories\Implementations\Repository;
-use Cals\RSPArchitecture\Repositories\Interfaces\RepositoryInterface;
+use Cals\RSP\Commands\MakePresenter;
+use Cals\RSP\Commands\MakeRepository;
+use Cals\RSP\Commands\MakeService;
+use Cals\RSP\Commands\RSPGenerate;
 use Illuminate\Support\ServiceProvider;
 
 /**

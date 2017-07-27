@@ -6,10 +6,10 @@
  * Time: 23:08
  */
 
-namespace Cals\RSPArchitecture\Services\Implementations;
+namespace Cals\RSP\Services\Implementations;
 
-use Cals\RSPArchitecture\Repositories\Interfaces\RepositoryInterface;
-use Cals\RSPArchitecture\Services\Interfaces\ServiceInterface;
+use Cals\RSP\Repositories\Interfaces\RepositoryInterface;
+use Cals\RSP\Services\Interfaces\ServiceInterface;
 
 /**
  * Class Service

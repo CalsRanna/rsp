@@ -1,13 +1,13 @@
 <?php
 
-namespace Cals\RSPArchitecture\Commands;
+namespace Cals\RSP\Commands;
 
 use Illuminate\Console\Command;
 
 /**
  * Class MakePresenter
  *
- * @package Cals\RSPArchitecture\Commands
+ * @package Cals\RSP\Commands
  */
 class MakePresenter extends Command
 {

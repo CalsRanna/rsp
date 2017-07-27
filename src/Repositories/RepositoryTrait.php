@@ -6,12 +6,12 @@
  * Time: 21:21
  */
 
-namespace Cals\RSPArchitecture\Repositories;
+namespace Cals\RSP\Repositories;
 
 /**
  * Trait RepositoryTrait
  *
- * @package Cals\RSPArchitecture\Repositories
+ * @package Cals\RSP\Repositories
  */
 trait RepositoryTrait
 {

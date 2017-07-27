@@ -6,15 +6,15 @@
  * Time: 0:34
  */
 
-namespace Cals\RSPArchitecture\Presenters\Implementations;
+namespace Cals\RSP\Presenters\Implementations;
 
-use Cals\RSPArchitecture\Presenters\Interfaces\PresenterInterface;
+use Cals\RSP\Presenters\Interfaces\PresenterInterface;
 use Carbon\Carbon;
 
 /**
  * Class Presenter
  *
- * @package Cals\RSPArchitecture\Presenters\Implementations
+ * @package Cals\RSP\Presenters\Implementations
  */
 class Presenter implements PresenterInterface
 {

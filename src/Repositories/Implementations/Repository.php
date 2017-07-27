@@ -6,18 +6,18 @@
  * Time: 20:52
  */
 
-namespace Cals\RSPArchitecture\Repositories\Implementations;
+namespace Cals\RSP\Repositories\Implementations;
 
-use Cals\RSPArchitecture\Repositories\Exceptions\RepositoryException;
-use Cals\RSPArchitecture\Repositories\Interfaces\RepositoryInterface;
-use Cals\RSPArchitecture\Repositories\RepositoryTrait;
+use Cals\RSP\Repositories\Exceptions\RepositoryException;
+use Cals\RSP\Repositories\Interfaces\RepositoryInterface;
+use Cals\RSP\Repositories\RepositoryTrait;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Repository
  *
- * @package Cals\RSPArchitecture\Repositories\Implementations
+ * @package Cals\RSP\Repositories\Implementations
  */
 abstract class Repository implements RepositoryInterface
 {

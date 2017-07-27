@@ -6,14 +6,14 @@
  * Time: 20:56
  */
 
-namespace Cals\RSPArchitecture\Repositories\Exceptions;
+namespace Cals\RSP\Repositories\Exceptions;
 
 use Exception;
 
 /**
  * Class RepositoryException
  *
- * @package Cals\RSPArchitecture\Repositories\Exceptions
+ * @package Cals\RSP\Repositories\Exceptions
  */
 class RepositoryException extends Exception
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Cals\RSPArchitecture\Commands;
+namespace Cals\RSP\Commands;
 
 use Illuminate\Console\Command;
 
 /**
  * Class MakeService
  *
- * @package Cals\RSPArchitecture\Commands
+ * @package Cals\RSP\Commands
  */
 class MakeService extends Command
 {
