@@ -27,8 +27,6 @@ class RSPGenerate extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -47,25 +45,25 @@ class RSPGenerate extends Command
         $presenters = config('rsp.presenters');
         foreach ($repositories as $repository) {
             $array = explode('\\', $repository);
-            $suffix = array_splice($array,3);
-            $repository = implode('/',$suffix);
-            $this->callSilent('make:repository',[
+            $suffix = array_splice($array, 3);
+            $repository = implode('/', $suffix);
+            $this->callSilent('make:repository', [
                 'repository' => $repository
             ]);
         }
         foreach ($services as $service) {
             $array = explode('\\', $service);
-            $suffix = array_splice($array,3);
-            $service = implode('/',$suffix);
-            $this->callSilent('make:service',[
+            $suffix = array_splice($array, 3);
+            $service = implode('/', $suffix);
+            $this->callSilent('make:service', [
                 'service' => $service
             ]);
         }
         foreach ($presenters as $presenter) {
             $array = explode('\\', $presenter);
-            $suffix = array_splice($array,3);
-            $presenter = implode('/',$suffix);
-            $this->callSilent('make:presenter',[
+            $suffix = array_splice($array, 3);
+            $presenter = implode('/', $suffix);
+            $this->callSilent('make:presenter', [
                 'presenter' => $presenter
             ]);
         }

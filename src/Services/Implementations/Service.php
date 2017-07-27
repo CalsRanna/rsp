@@ -90,7 +90,7 @@ class Service implements ServiceInterface
      */
     public function update(array $credentials, array $inputs)
     {
-        return $this->repository->update($credentials,$inputs);
+        return $this->repository->update($credentials, $inputs);
     }
 
     /**
