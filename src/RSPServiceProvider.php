@@ -15,7 +15,7 @@ use Illuminate\Support\ServiceProvider;
  *
  * @package Cals\RSPArchitecture
  */
-class RSPProvider extends ServiceProvider
+class RSPServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -32,7 +32,7 @@ class RSPProvider extends ServiceProvider
         ]);
         $this->publishes([
             __DIR__ . '/config/rsp.php' => config_path('rsp.php')
-        ],'rsp');
+        ], 'rsp');
     }
 
     /**
@@ -42,7 +42,6 @@ class RSPProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(RepositoryInterface::class, Repository::class);
         $this->bindRepositories();
         $this->bindServices();
         $this->bindPresenters();

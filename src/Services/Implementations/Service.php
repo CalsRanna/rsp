@@ -24,7 +24,7 @@ class Service implements ServiceInterface
     protected $repository;
 
     /**
-     * Store something.
+     * Store one record into database.
      *
      * @param array $inputs
      * @return mixed
@@ -35,7 +35,17 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Get something by $credentials. Show columns provided in $columns.
+     * Get all records from the database.
+     *
+     * @return mixed
+     */
+    public function all()
+    {
+        return $this->repository->all();
+    }
+
+    /**
+     * Get some records with columns provided which satisfied credentials.
      *
      * @param array|null $credentials
      * @param array $columns
@@ -43,30 +53,54 @@ class Service implements ServiceInterface
      */
     public function get(array $credentials = null, array $columns = ['*'])
     {
-        return $this->repository->get($columns, $credentials);
+        return $this->repository->get($credentials, $columns);
     }
 
     /**
-     * Update something by $credentials.
+     * Get some records with columns provided which satisfied credentials, and sort by the field.
      *
-     * @param array $inputs
-     * @param array $credentials
+     * @param array|null $credentials
+     * @param array $columns
+     * @param $field
+     * @param $asc
      * @return mixed
      */
-    public function update(array $inputs, array $credentials)
+    public function getRecordsSortBy(array $credentials = null, array $columns = ['*'], $field = 'id', $asc = true)
     {
-        return $this->repository->update($inputs, $credentials);
+        return $this->repository->getRecordsSortBy($credentials, $columns, $field, $asc);
     }
 
     /**
-     * Destroy something by $credentials.
+     * Find the record which satisfied credentials.
+     *
+     * @param array|null $credentials
+     * @return mixed
+     */
+    public function find(array $credentials = null)
+    {
+        return $this->repository->find($credentials);
+    }
+
+    /**
+     * Update some records satisfied by credentials to new values provided.
      *
      * @param array $credentials
-     * @return mixed
+     * @param array $inputs
+     * @return boolean
+     */
+    public function update(array $credentials, array $inputs)
+    {
+        return $this->repository->update($credentials,$inputs);
+    }
+
+    /**
+     * Destroy some records satisfied by credentials.
+     *
+     * @param array $credentials
+     * @return boolean
      */
     public function destroy(array $credentials)
     {
         return $this->repository->destroy($credentials);
     }
-
 }

@@ -27,8 +27,6 @@ class MakeService extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -115,7 +113,7 @@ class MakeService extends Command
                 . "namespace " . $namespace . "\\Implementations;\n\n"
                 . "use App\\Repositories\\" . $repository . "RepositoryInterface;\n"
                 . "use " . $namespace . "\\Interfaces\\" . $service . "Interface;\n"
-                . "use Cals\\RSPArchitecture\\Services\\Implementations\\Service;\n\n"
+                . "use Cals\\RSP\\Services\\Implementations\\Service;\n\n"
                 . "class " . $service . " extends Service implements " . $service . "Interface\n"
                 . "{\n"
                 . "    /**\n"

@@ -1,5 +1,5 @@
 {
-    "name": "cals/rsp-architecture",
+    "name": "cals/rsp",
     "description": "RSP Architecture for Laravel",
     "license": "MIT",
     "authors": [
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cals\\RSPArchitecture\\": "src/"
+            "Cals\\RSP\\": "src/"
         }
     }
 }

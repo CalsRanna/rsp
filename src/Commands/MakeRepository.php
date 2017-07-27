@@ -27,8 +27,6 @@ class MakeRepository extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -114,7 +112,7 @@ class MakeRepository extends Command
                 . "namespace " . $namespace . "\\Implementations;\n\n"
                 . "use App\\Models\\" . $model . ";\n"
                 . "use " . $namespace . "\\Interfaces\\" . $repository . "Interface;\n"
-                . "use Cals\\RSPArchitecture\\Repositories\\Implementations\\Repository;\n\n"
+                . "use Cals\\RSP\\Repositories\\Implementations\\Repository;\n\n"
                 . "class " . $repository . " extends Repository implements " . $repository . "Interface\n"
                 . "{\n"
                 . "    /**\n"

@@ -110,7 +110,7 @@ class MakePresenter extends Command
             $content = "<?php\n\n"
                 . "namespace " . $namespace . "\\Implementations;\n\n"
                 . "use " . $namespace . "\\Interfaces\\" . $presenter . "Interface;\n"
-                . "use Cals\\RSPArchitecture\\Presenters\\Implementations\\Presenter;\n\n"
+                . "use Cals\\RSP\\Presenters\\Implementations\\Presenter;\n\n"
                 . "class " . $presenter . " extends Presenter implements " . $presenter . "Interface\n"
                 . "{\n"
                 . "    // Put your code here...\n"
