@@ -82,8 +82,8 @@ The repository we extended provides nine methods:
 `Illuminate\Database\Eloquent\Model`.
 * `all()` You can use it to get all records. One thing you should notice is that the type of returned value is
 `Illuminate\Database\Eloquent\Collection` rather than `array`.
-* `paginate($credentials = null, $perPage = 15)` You can use it to paginate records. One thing you should notice is that
- the type of returned value is `Illuminate\Pagination\LengthAwarePaginator` rather than `array`.
+* `paginate(array $credentials = null, $page, $perPage = 15)` You can use it to paginate records. One thing you should
+notice is that the type of returned value is `Illuminate\Pagination\LengthAwarePaginator` rather than `array`.
 * `get(array $credentials = null, array $columns = ['*'])` You can use it to get records. One thing you should notice is 
 that the type of returned value is `Illuminate\Database\Eloquent\Collection` rather than `array`.
 * `getRecordsSortBy(array $credentials = null, array $columns = ['*'], $field = 'id', $asc = true)` You can use it to
@@ -158,7 +158,7 @@ The service we extended provides eight methods:
 
 * `store(array $inputs)`
 * `all()`
-* `paginate($credentials = null, $perPage = 15)`
+* `paginate(array $credentials = null, $page, $perPage = 15)`
 * `get(array $credentials = null, array $columns = ['*'])`
 * `getRecordsSortBy(array $credentials = null, array $columns = ['*'], $field = 'id', $asc = true)`
 * `find(array $credentials = null)`

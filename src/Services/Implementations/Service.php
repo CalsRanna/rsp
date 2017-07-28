@@ -45,6 +45,19 @@ class Service implements ServiceInterface
     }
 
     /**
+     * Paginate the records which satisfied credentials.
+     *
+     * @param array|null $credentials
+     * @param int $page
+     * @param int $perPage
+     * @return mixed
+     */
+    public function paginate(array $credentials = null, $page, $perPage = 15)
+    {
+        return $this->repository->paginate($credentials, $page, $perPage);
+    }
+
+    /**
      * Get some records with columns provided which satisfied credentials.
      *
      * @param array|null $credentials

@@ -39,14 +39,15 @@ trait RepositoryTrait
     /**
      * Paginate the records which satisfied credentials.
      *
-     * @param null $credentials
+     * @param array|null $credentials
+     * @param int $page
      * @param int $perPage
      * @return mixed
      */
-    public function paginate($credentials = null, $perPage = 15)
+    public function paginate(array $credentials = null, $page, $perPage = 15)
     {
         $builder = $this->builder($credentials);
-        return $builder->paginate($perPage);
+        return $builder->paginate($perPage, array('*'), 'page', $page);
     }
 
     /**

@@ -33,11 +33,12 @@ interface RepositoryInterface
     /**
      * Paginate the records which satisfied credentials.
      *
-     * @param null $credentials
+     * @param array|null $credentials
+     * @param int $page
      * @param int $perPage
      * @return mixed
      */
-    public function paginate($credentials = null, $perPage = 15);
+    public function paginate(array $credentials = null, $page, $perPage = 15);
 
     /**
      * Get some records with columns provided which satisfied credentials.
