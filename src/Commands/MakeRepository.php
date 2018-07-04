@@ -138,7 +138,6 @@ class MakeRepository extends Command
      */
     private function calculateModel($repository)
     {
-        $length = count($repository) - 10;
-        return substr($repository, 0, $length - 1);
+        return substr($repository, 0, strlen($repository) - 10);
     }
 }
