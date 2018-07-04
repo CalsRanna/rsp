@@ -2,7 +2,7 @@
 
 ## About RSP
 
-RSP is a web application library used to make things easy while you want build a plain Laravel application.
+RSP is a web application library used to make things easier while you building a plain Laravel application.
 Besides, it provides some efficient commands to let you free while you're coding.
 
 RSP is short for **Repository Service and Presenter**.
@@ -21,6 +21,8 @@ terminal to install it.
 
 After you install the RSP, you should put `Cals\RSP\RSPServiceProvider::class` in your
 `config/app.php` providers array to make it work.
+
+> If you use Laravel 5.5 and after, you don't need do it cause laravel will auto load the provider.
 
 Then you should run `php artisan vendor:publish --tag=rsp` to publish `rsp.php`.
 ### Usage
