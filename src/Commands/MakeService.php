@@ -157,7 +157,6 @@ class MakeService extends Command
      */
     private function calculatePrefix($service)
     {
-        $length = count($service) - 7;
-        return substr($service, 0, $length - 1);
+        return substr($service, 0, strlen($service) - 7);
     }
 }
